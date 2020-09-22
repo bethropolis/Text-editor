@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Bethro speed editor</title>
+    <meta name="description"
+        content="1KB lightweight, fast &amp; powerful JavaScript templating engine with zero dependencies. Compatible with server-side environments like Node.js, module loaders like RequireJS, Browserify or webpack and all web browsers." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+
+
+<body>
+    <ul>
+        <li><img  src="img/logo.png" alt=""></li>
+        <li>file 
+            <ul>
+            <li><label for="upload">new file</label><input id="upload" type="file" /></li>
+            <li>new window</li>
+            <li>open file</li>
+            <li>open folder</li>
+            <li>open workplace</li>
+            <a href=".code"><li>save</li></a>
+            <li>save as</li>
+            </ul>
+        </li>
+        <li>edit <ul>
+            <li><label onclick="recordTextArea(e)">undo</label></li>
+            <li>redo</li>
+            <li>cut</li>
+            <li><label for"copy" onclick="myFunction()">copy</label></li>
+            <li>paste</li>
+            <li>find</li>
+            <li>replace</li>
+            <li>find in files</li>
+            <li>replaxe in files</li>
+        </ul></li>
+        <li>selection</li>
+        <li>view</li>
+        <li id="render">run</li>
+    </ul>
+    <p>
+        <button type="submit" id="render2">Run</button>
+        <button type="reset" id="reset">Reset</button>
+    </p>
+    <form>
+        <div class="box">
+<textarea rows="12" id="template"  class="code"></textarea>
+<div id="result" class="result"></div>
+        </div>
+    </form>
+    <p style="display: none;">
+    <label for="data">Data (JSON)</label>
+    <textarea rows="14" id="data" class="code"></textarea></p>
+    <script type="text/x-tmpl" id="tmpl-demo">
+        <h1> bethropolis editor <h1>
+         <H3>type your code here</H3>
+         <h4><u>it is... </u></h4>
+         <ol>
+           <li>fast </li>
+           <li>lightweight</li>
+           <li>powerful</li>
+         </ol>
+    </script>
+    <script type="text/x-tmpl" id="tmpl-data">
+        {
+          "title": "bethropolis Templates",
+          "features": [
+              "lightweight & fast",
+              "powerful",
+              "zero dependencies"
+          ]
+      }
+    </script>
+    <script type="text/x-tmpl" id="tmpl-error">
+        <h5>{%=o.title%}</h5>
+      <pre>{%=o.error.toString()%}</pre>
+    </script>
+    <script src="index.js"></script>
+    <script src="function.js"></script>
+	<script>
+function myFunction() {
+  var copyText = document.getElementById("template");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999)
+  document.execCommand("copy");
+  alert("Copied");
+}
+
+ var b = "<"
+ var c = ">"
+var txtarea = document.getElementById('template'),
+    record = [];
+
+txtarea.addEventListener('keydown', recordTextArea);
+txtarea.addEventListener('keydown', syntaxHighlight);
+
+function recordTextArea(e){
+    record.push(String.fromCharCode(e.which));
+	console.log(txtarea.value)
+}
+
+function syntaxHighlight(){
+    var ca = document.getElementByTagName("textarea");
+    for (var i=0; i < ca.length; i+++){
+        var data = ca[i].innerHTML;
+        data = data.replace(/b;(.*?) c;/g, '<span class="code-elem">b;$1c;</span>' );
+        ca[i].innerHTML = data;
+        }
+}
+
+	</script>
+</body>
+
+</html>
