@@ -20,7 +20,7 @@ become a fullstack developer and this is one of my biggest dreams.
 the second reason is because I love open source, I have gotten so far out from open source software and I would like to bring it to others.
 
 ------------------------------------------------------------------------------------------------
-#version 0.0.1 of the editor is now released# on 2:15AM 23 sep, 2020.
+version 0.0.1 of the editor is now released on 2:15AM 23 sep, 2020.
 
 THANK YOU FOR JOINING
 
